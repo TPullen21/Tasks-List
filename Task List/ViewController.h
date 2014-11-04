@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TaskData.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
+
+@property (strong, nonatomic) NSMutableArray *tasks;
 
 @end
 

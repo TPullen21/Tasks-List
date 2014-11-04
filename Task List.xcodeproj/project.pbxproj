@@ -14,6 +14,10 @@
 		DD90580F1A09579200DC0D90 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD90580E1A09579200DC0D90 /* Images.xcassets */; };
 		DD9058121A09579200DC0D90 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD9058101A09579200DC0D90 /* LaunchScreen.xib */; };
 		DD90581E1A09579200DC0D90 /* Task_ListTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DD90581D1A09579200DC0D90 /* Task_ListTests.m */; };
+		DD9058291A09729F00DC0D90 /* AddTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9058281A09729F00DC0D90 /* AddTaskViewController.m */; };
+		DD90582C1A0973E300DC0D90 /* ViewDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD90582B1A0973E300DC0D90 /* ViewDetailViewController.m */; };
+		DD90582F1A09742D00DC0D90 /* EditDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD90582E1A09742D00DC0D90 /* EditDetailViewController.m */; };
+		DD9058321A097CCF00DC0D90 /* TaskData.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9058311A097CCF00DC0D90 /* TaskData.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +44,14 @@
 		DD9058171A09579200DC0D90 /* Task ListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Task ListTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD90581C1A09579200DC0D90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DD90581D1A09579200DC0D90 /* Task_ListTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Task_ListTests.m; sourceTree = "<group>"; };
+		DD9058271A09729F00DC0D90 /* AddTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTaskViewController.h; sourceTree = "<group>"; };
+		DD9058281A09729F00DC0D90 /* AddTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTaskViewController.m; sourceTree = "<group>"; };
+		DD90582A1A0973E300DC0D90 /* ViewDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewDetailViewController.h; sourceTree = "<group>"; };
+		DD90582B1A0973E300DC0D90 /* ViewDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewDetailViewController.m; sourceTree = "<group>"; };
+		DD90582D1A09742D00DC0D90 /* EditDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditDetailViewController.h; sourceTree = "<group>"; };
+		DD90582E1A09742D00DC0D90 /* EditDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditDetailViewController.m; sourceTree = "<group>"; };
+		DD9058301A097CCF00DC0D90 /* TaskData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskData.h; sourceTree = "<group>"; };
+		DD9058311A097CCF00DC0D90 /* TaskData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskData.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +98,14 @@
 				DD9058081A09579200DC0D90 /* ViewController.h */,
 				DD9058091A09579200DC0D90 /* ViewController.m */,
 				DD90580B1A09579200DC0D90 /* Main.storyboard */,
+				DD90582D1A09742D00DC0D90 /* EditDetailViewController.h */,
+				DD90582E1A09742D00DC0D90 /* EditDetailViewController.m */,
+				DD90582A1A0973E300DC0D90 /* ViewDetailViewController.h */,
+				DD9058301A097CCF00DC0D90 /* TaskData.h */,
+				DD9058311A097CCF00DC0D90 /* TaskData.m */,
+				DD90582B1A0973E300DC0D90 /* ViewDetailViewController.m */,
+				DD9058271A09729F00DC0D90 /* AddTaskViewController.h */,
+				DD9058281A09729F00DC0D90 /* AddTaskViewController.m */,
 				DD90580E1A09579200DC0D90 /* Images.xcassets */,
 				DD9058101A09579200DC0D90 /* LaunchScreen.xib */,
 				DD9058011A09579200DC0D90 /* Supporting Files */,
@@ -220,8 +240,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD90580A1A09579200DC0D90 /* ViewController.m in Sources */,
+				DD9058321A097CCF00DC0D90 /* TaskData.m in Sources */,
+				DD90582C1A0973E300DC0D90 /* ViewDetailViewController.m in Sources */,
+				DD9058291A09729F00DC0D90 /* AddTaskViewController.m in Sources */,
 				DD9058071A09579200DC0D90 /* AppDelegate.m in Sources */,
 				DD9058041A09579200DC0D90 /* main.m in Sources */,
+				DD90582F1A09742D00DC0D90 /* EditDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
