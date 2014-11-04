@@ -66,6 +66,7 @@
                     <navigationItem key="navigationItem" title="Tasks" id="oHB-RN-dhT">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="XPe-JE-AWY">
                             <connections>
+                                <action selector="addTaskBarButtonPressed:" destination="vXZ-lx-hvc" id="oTp-oi-cRB"/>
                                 <segue destination="R9q-TW-2Gz" kind="modal" id="Sa4-M9-ndN"/>
                             </connections>
                         </barButtonItem>
@@ -73,7 +74,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="tableView" destination="70E-o2-FcM" id="VAq-bI-qMy"/>
-                        <segue destination="HrK-yl-caj" kind="push" id="X6w-CB-zJC"/>
+                        <segue destination="HrK-yl-caj" kind="push" identifier="toViewDetailViewController" id="X6w-CB-zJC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -98,20 +99,20 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hdx-Fk-lA3">
-                                <rect key="frame" x="16" y="101" width="288" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hdx-Fk-lA3">
+                                <rect key="frame" x="16" y="130" width="288" height="241"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XYM-TR-jKa">
-                                <rect key="frame" x="16" y="130" width="288" height="21"/>
+                                <rect key="frame" x="16" y="101" width="288" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vN6-gM-7hD">
-                                <rect key="frame" x="16" y="159" width="288" height="21"/>
+                                <rect key="frame" x="16" y="379" width="288" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -119,14 +120,20 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="r3t-kB-U5b"/>
+                    <navigationItem key="navigationItem" id="r3t-kB-U5b">
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="awx-8f-WtN">
+                            <connections>
+                                <action selector="editBarButtonPressed:" destination="HrK-yl-caj" id="aVJ-1B-kNh"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="completedLabel" destination="vN6-gM-7hD" id="GZv-RG-TrQ"/>
                         <outlet property="dateLabel" destination="XYM-TR-jKa" id="sYI-Gd-U4J"/>
                         <outlet property="descriptionLabel" destination="Hdx-Fk-lA3" id="qgc-Dq-7Sv"/>
                         <outlet property="titleLabel" destination="fDg-nS-F3B" id="Go4-gh-Xqf"/>
-                        <segue destination="LwK-R5-kAv" kind="modal" id="blJ-4n-YT9"/>
+                        <segue destination="LwK-R5-kAv" kind="push" id="4q3-go-GxU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Awo-yH-hsv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -144,9 +151,51 @@
                     <view key="view" contentMode="scaleToFill" id="oGl-jx-C8p">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ikt-Ui-R2D">
+                                <rect key="frame" x="16" y="20" width="48" height="30"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelButtonPressed:" destination="R9q-TW-2Gz" eventType="touchUpInside" id="Him-2O-FOh"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FqK-PH-qzU">
+                                <rect key="frame" x="274" y="20" width="30" height="30"/>
+                                <state key="normal" title="Add">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addTaskButtonPressed:" destination="R9q-TW-2Gz" eventType="touchUpInside" id="sF9-id-eUt"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mOv-dS-thp">
+                                <rect key="frame" x="16" y="68" width="288" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EQv-ID-Wgc">
+                                <rect key="frame" x="16" y="106" width="288" height="133"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="ahM-Wl-bSU">
+                                <rect key="frame" x="0.0" y="256" width="320" height="162"/>
+                                <date key="date" timeIntervalSinceReferenceDate="436833644.12937802">
+                                    <!--2014-11-04 22:40:44 +0000-->
+                                </date>
+                            </datePicker>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="datePicker" destination="ahM-Wl-bSU" id="pLD-kT-Imi"/>
+                        <outlet property="textField" destination="mOv-dS-thp" id="LMX-aj-2mJ"/>
+                        <outlet property="textView" destination="EQv-ID-Wgc" id="SYC-4l-90D"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="utD-05-MYR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -163,9 +212,36 @@
                     <view key="view" contentMode="scaleToFill" id="ZfD-A5-yan">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UIT-Tw-psl">
+                                <rect key="frame" x="11" y="142" width="293" height="216"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="uSC-if-ezF">
+                                <rect key="frame" x="0.0" y="372" width="320" height="162"/>
+                                <date key="date" timeIntervalSinceReferenceDate="436833949.49640799">
+                                    <!--2014-11-04 22:45:49 +0000-->
+                                </date>
+                            </datePicker>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uMQ-fb-a7H">
+                                <rect key="frame" x="16" y="72" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="AU5-pU-mLX">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="F2F-kN-1VB"/>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="datePicker" destination="uSC-if-ezF" id="FTo-UF-Yt4"/>
+                        <outlet property="textField" destination="uMQ-fb-a7H" id="MYg-b6-MkA"/>
+                        <outlet property="textView" destination="UIT-Tw-psl" id="w3A-uk-mPh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xNc-Of-j5r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

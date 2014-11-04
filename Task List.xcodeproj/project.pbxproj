@@ -100,9 +100,9 @@
 				DD90580B1A09579200DC0D90 /* Main.storyboard */,
 				DD90582D1A09742D00DC0D90 /* EditDetailViewController.h */,
 				DD90582E1A09742D00DC0D90 /* EditDetailViewController.m */,
-				DD90582A1A0973E300DC0D90 /* ViewDetailViewController.h */,
 				DD9058301A097CCF00DC0D90 /* TaskData.h */,
 				DD9058311A097CCF00DC0D90 /* TaskData.m */,
+				DD90582A1A0973E300DC0D90 /* ViewDetailViewController.h */,
 				DD90582B1A0973E300DC0D90 /* ViewDetailViewController.m */,
 				DD9058271A09729F00DC0D90 /* AddTaskViewController.h */,
 				DD9058281A09729F00DC0D90 /* AddTaskViewController.m */,
@@ -436,6 +436,7 @@
 				DD9058231A09579200DC0D90 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DD9058241A09579200DC0D90 /* Build configuration list for PBXNativeTarget "Task ListTests" */ = {
 			isa = XCConfigurationList;
@@ -444,6 +445,7 @@
 				DD9058261A09579200DC0D90 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

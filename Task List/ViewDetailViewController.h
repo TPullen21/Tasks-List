@@ -15,4 +15,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *dateLabel;
 @property (strong, nonatomic) IBOutlet UILabel *completedLabel;
 
+- (IBAction)editBarButtonPressed:(UIBarButtonItem *)sender;
+
+
 @end
