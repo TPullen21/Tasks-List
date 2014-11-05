@@ -52,6 +52,7 @@
 		DD90582E1A09742D00DC0D90 /* EditDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditDetailViewController.m; sourceTree = "<group>"; };
 		DD9058301A097CCF00DC0D90 /* TaskData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskData.h; sourceTree = "<group>"; };
 		DD9058311A097CCF00DC0D90 /* TaskData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskData.m; sourceTree = "<group>"; };
+		DD979F391A0AD76100008582 /* Task List-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Task List-Prefix.pch"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +99,7 @@
 				DD9058081A09579200DC0D90 /* ViewController.h */,
 				DD9058091A09579200DC0D90 /* ViewController.m */,
 				DD90580B1A09579200DC0D90 /* Main.storyboard */,
+				DD979F391A0AD76100008582 /* Task List-Prefix.pch */,
 				DD90582D1A09742D00DC0D90 /* EditDetailViewController.h */,
 				DD90582E1A09742D00DC0D90 /* EditDetailViewController.m */,
 				DD9058301A097CCF00DC0D90 /* TaskData.h */,
@@ -367,6 +369,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "Task List/Task List-Prefix.pch";
 				INFOPLIST_FILE = "Task List/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -377,6 +380,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "Task List/Task List-Prefix.pch";
 				INFOPLIST_FILE = "Task List/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

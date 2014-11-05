@@ -16,5 +16,6 @@
 @property (nonatomic) BOOL completed;
 
 + (NSString *)getDateString:(NSDate *)date;
+- (id)initWithData:(NSDictionary *)data;
 
 @end

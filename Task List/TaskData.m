@@ -18,4 +18,23 @@
     return [formatter stringFromDate:date];
 }
 
+-(id)initWithData:(NSDictionary *)data {
+    self = [super init];
+    
+    if (self) {
+        self.title = data[TASK_TITLE];
+        self.desc = data[TASK_DESCRIPTION];
+        self.date = [TaskData getDateString:data[TASK_DATE]];
+        self.completed = [data[TASK_COMPLETION] boolValue];
+    }
+    
+    return self;
+}
+
+- (id)init {
+    self = [self initWithData:nil];
+    
+    return self;
+}
+
 @end
