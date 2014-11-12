@@ -17,6 +17,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.titleLabel.text = self.taskToView.title;
+    self.descriptionLabel.text = self.taskToView.desc;
+    self.dateLabel.text = self.taskToView.date;
+    self.completedLabel.text = self.taskToView.completed ? @"Completed" : @"Incomplete";
 }
 
 - (void)didReceiveMemoryWarning {

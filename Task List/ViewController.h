@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "TaskData.h"
+#import "AddTaskViewController.h"
+#import "ViewDetailViewController.h"
 
-@interface ViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface ViewController : UIViewController <AddTaskViewControllerDeleate, UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 

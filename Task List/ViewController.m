@@ -14,9 +14,19 @@
 
 @implementation ViewController
 
+-(NSMutableArray *)tasks {
+    if (!_tasks) {
+        _tasks = [[NSMutableArray alloc] init];
+    }
+    return _tasks;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
     
     self.view.backgroundColor = [UIColor blackColor];
     self.tableView.backgroundColor = [UIColor clearColor];
@@ -35,6 +45,27 @@
     task2.completed = NO;
     
     self.tasks = [[NSMutableArray alloc] initWithObjects:task, task2, nil];
+    
+    NSArray *tasksAsPropertyLists = [[NSUserDefaults standardUserDefaults] arrayForKey:TASK_OBJECTS_KEY];
+    
+    for (NSDictionary *dict in tasksAsPropertyLists) {
+        [self.tasks addObject:[self taskObjectForDictionary:dict]];
+    }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.destinationViewController isKindOfClass:[AddTaskViewController class]]) {
+        AddTaskViewController *addTaskViewController = segue.destinationViewController;
+        addTaskViewController.delegate = self;
+    }
+    
+    if ([segue.destinationViewController isKindOfClass:[ViewDetailViewController class]]) {
+        if ([sender isKindOfClass:[NSIndexPath class]]) {
+            ViewDetailViewController *viewDetailViewController = segue.destinationViewController;
+            NSIndexPath *path = sender;
+            viewDetailViewController.taskToView = [self.tasks objectAtIndex:path.row];
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -50,16 +81,71 @@
     
     cell.textLabel.text = task.title;
     cell.detailTextLabel.text = task.desc;
-    cell.backgroundColor = task.completed ? [UIColor greenColor] : [UIColor redColor];
+    if (task.completed) {
+        cell.backgroundColor = [UIColor greenColor];
+    }
+    else if ([NSDate date] < [TaskData getDate:task.date]) {
+        cell.backgroundColor = [UIColor redColor];
+    }
+    else {
+        cell.backgroundColor = [UIColor blueColor];
+    }
+    
+    
     cell.textLabel.textColor = [UIColor whiteColor];
     
     return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return [self.tasks count];;
+}
+
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
+    [self performSegueWithIdentifier:@"toViewDetailViewController" sender:indexPath];
 }
 
 - (IBAction)addTaskBarButtonPressed:(UIBarButtonItem *)sender {
+    [self performSegueWithIdentifier:@"toAddTaskViewController" sender:nil];
 }
+
+#pragma mark - AddTaskViewControllerDelegate
+
+-(void)didAddTask:(TaskData *)task {
+    [self.tasks addObject:task];
+    
+    NSMutableArray *tasksAsPropertyLists = [[[NSUserDefaults standardUserDefaults] arrayForKey:TASK_OBJECTS_KEY] mutableCopy];
+    
+    if (!tasksAsPropertyLists) {
+        tasksAsPropertyLists = [[NSMutableArray alloc] init];
+    }
+    
+    [tasksAsPropertyLists addObject:[self taskObjectAsAPropertyList:task]];
+    [[NSUserDefaults standardUserDefaults] setObject:tasksAsPropertyLists forKey:TASK_OBJECTS_KEY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    [self.tableView reloadData];
+}
+
+-(void)didCancel {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - Helper Methods
+
+- (NSDictionary *)taskObjectAsAPropertyList:(TaskData *)taskObject {
+    return @{
+             TASK_TITLE         :   taskObject.title,
+             TASK_DESCRIPTION   :   taskObject.desc,
+             TASK_DATE          :   taskObject.date,
+             TASK_COMPLETION    :   @(taskObject.completed)
+            };
+}
+
+- (TaskData *)taskObjectForDictionary:(NSDictionary *)dict {
+    return [[TaskData alloc] initWithData:dict];
+}
+
 @end

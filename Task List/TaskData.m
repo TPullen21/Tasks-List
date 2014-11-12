@@ -10,12 +10,20 @@
 
 @implementation TaskData
 
-+(NSString *)getDateString:(NSDate *)date {
++ (NSString *)getDateString:(NSDate *)date {
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy-MM-dd"];
     
     return [formatter stringFromDate:date];
+}
+
++ (NSDate *)getDate:(NSString *)stringDate {
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    
+    return [formatter dateFromString:stringDate];
 }
 
 -(id)initWithData:(NSDictionary *)data {

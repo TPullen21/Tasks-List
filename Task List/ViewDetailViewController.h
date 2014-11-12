@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TaskData.h"
 
 @interface ViewDetailViewController : UIViewController
 
@@ -14,6 +15,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (strong, nonatomic) IBOutlet UILabel *dateLabel;
 @property (strong, nonatomic) IBOutlet UILabel *completedLabel;
+@property (strong, nonatomic) TaskData *taskToView;
+
 
 - (IBAction)editBarButtonPressed:(UIBarButtonItem *)sender;
 

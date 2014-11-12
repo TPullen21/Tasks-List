@@ -67,7 +67,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="XPe-JE-AWY">
                             <connections>
                                 <action selector="addTaskBarButtonPressed:" destination="vXZ-lx-hvc" id="oTp-oi-cRB"/>
-                                <segue destination="R9q-TW-2Gz" kind="modal" id="Sa4-M9-ndN"/>
+                                <segue destination="R9q-TW-2Gz" kind="modal" identifier="toAddTaskViewController" id="Sa4-M9-ndN"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
