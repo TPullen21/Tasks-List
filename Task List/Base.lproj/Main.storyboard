@@ -133,7 +133,7 @@
                         <outlet property="dateLabel" destination="XYM-TR-jKa" id="sYI-Gd-U4J"/>
                         <outlet property="descriptionLabel" destination="Hdx-Fk-lA3" id="qgc-Dq-7Sv"/>
                         <outlet property="titleLabel" destination="fDg-nS-F3B" id="Go4-gh-Xqf"/>
-                        <segue destination="LwK-R5-kAv" kind="push" id="4q3-go-GxU"/>
+                        <segue destination="LwK-R5-kAv" kind="push" identifier="toEditDetailViewController" id="4q3-go-GxU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Awo-yH-hsv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -234,7 +234,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="AU5-pU-mLX">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="F2F-kN-1VB"/>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="F2F-kN-1VB">
+                            <connections>
+                                <action selector="saveBarButtonPressed:" destination="LwK-R5-kAv" id="441-aa-Xiz"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>

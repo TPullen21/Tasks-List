@@ -28,16 +28,26 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([segue.destinationViewController isKindOfClass:[EditDetailViewController class]]) {
+        EditDetailViewController *editDetailVC = segue.destinationViewController;
+        editDetailVC.delegate = self;
+        editDetailVC.task = self.taskToView;
+    }
 }
-*/
 
 - (IBAction)editBarButtonPressed:(UIBarButtonItem *)sender {
+    [self performSegueWithIdentifier:@"toEditDetailViewController" sender:nil];
 }
+
+-(void)didEditTask:(TaskData *)task {
+    [self.delegate didEditTask:task atRow:self.indexRow];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 @end

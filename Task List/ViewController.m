@@ -64,6 +64,8 @@
             ViewDetailViewController *viewDetailViewController = segue.destinationViewController;
             NSIndexPath *path = sender;
             viewDetailViewController.taskToView = [self.tasks objectAtIndex:path.row];
+            viewDetailViewController.indexRow = path.row;
+            viewDetailViewController.delegate = self;
         }
     }
 }
@@ -131,6 +133,13 @@
 
 -(void)didCancel {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - ViewDetailViewControllerDelegate
+
+-(void)didEditTask:(TaskData *)task atRow:(long)row {
+    self.tasks[row] = task;
+    [self.tableView reloadData];
 }
 
 #pragma mark - Helper Methods
