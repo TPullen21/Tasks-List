@@ -31,21 +31,6 @@
     self.view.backgroundColor = [UIColor blackColor];
     self.tableView.backgroundColor = [UIColor clearColor];
     
-//    TaskData *task = [[TaskData alloc] init];
-//    TaskData *task2 = [[TaskData alloc] init];
-//    
-//    task.title = @"Task Uno";
-//    task.desc = @"Description for task 1";
-//    task.date = [TaskData getDateString:[NSDate date]];
-//    task.completed = YES;
-//    
-//    task2.title = @"Task Dos";
-//    task2.desc = @"Description for task 2";
-//    task2.date = [TaskData getDateString:[[NSDate date] dateByAddingTimeInterval:60*60*24*15]];
-//    task2.completed = NO;
-//    
-//    self.tasks = [[NSMutableArray alloc] initWithObjects:task, task2, nil];
-    
     NSArray *tasksAsPropertyLists = [[NSUserDefaults standardUserDefaults] arrayForKey:TASK_OBJECTS_KEY];
     
     for (NSDictionary *dict in tasksAsPropertyLists) {
@@ -55,10 +40,6 @@
 //    
 //    [[NSUserDefaults standardUserDefaults] setObject:[[NSArray alloc] init] forKey:TASK_OBJECTS_KEY];
 //    [[NSUserDefaults standardUserDefaults] synchronize];
-//
-//    TaskData *tempTask = self.tasks[2];
-//    tempTask.date = [TaskData getDateString:[NSDate date]];
-//    self.tasks[2] = tempTask;
     
 }
 
@@ -83,6 +64,8 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - UITableViewDataSource
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *cellIdentifier = @"DataCell";
@@ -176,8 +159,30 @@
     return [[TaskData alloc] initWithData:dict];
 }
 
-- (void)updateStandardUserDefaults:(TaskData *)task {
+- (void)updateCompletionOfTask:(TaskData *)task forIndexPath:(NSIndexPath *)indexPath {
     
+    NSMutableArray *tasksAsPropertyLists = [[[NSUserDefaults standardUserDefaults] arrayForKey:TASK_OBJECTS_KEY] mutableCopy];
+    
+    if (!tasksAsPropertyLists) tasksAsPropertyLists = [[NSMutableArray alloc] init];
+    
+    [tasksAsPropertyLists removeObjectAtIndex:indexPath.row];
+    
+    task.completed = task.completed == YES ? NO : YES;
+    
+    [tasksAsPropertyLists insertObject:[self taskObjectAsAPropertyList:task] atIndex:indexPath.row];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:tasksAsPropertyLists forKey:TASK_OBJECTS_KEY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [self.tableView reloadData];
+}
+
+#pragma mark - UITableView Delegate
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    TaskData *task = self.tasks[indexPath.row];
+    
+    [self updateCompletionOfTask:task forIndexPath:indexPath];
 }
 
 @end
