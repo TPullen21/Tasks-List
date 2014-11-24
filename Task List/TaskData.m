@@ -13,7 +13,7 @@
 + (NSString *)getDateString:(NSDate *)date {
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd"];
+    [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
     
     return [formatter stringFromDate:date];
 }
@@ -21,7 +21,7 @@
 + (NSDate *)getDate:(NSString *)stringDate {
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd"];
+    [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
     
     return [formatter dateFromString:stringDate];
 }
@@ -32,7 +32,7 @@
     if (self) {
         self.title = data[TASK_TITLE];
         self.desc = data[TASK_DESCRIPTION];
-        self.date = [TaskData getDateString:data[TASK_DATE]];
+        self.date = data[TASK_DATE];
         self.completed = [data[TASK_COMPLETION] boolValue];
     }
     

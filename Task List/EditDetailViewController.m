@@ -47,4 +47,14 @@
     
     [self.delegate didEditTask:tempTask];
 }
+
+- (IBAction)saveButtonPressed:(UIButton *)sender {
+    
+    TaskData *tempTask = [[TaskData alloc] init];
+    tempTask.title = self.textField.text;
+    tempTask.desc = self.textView.text;
+    tempTask.date = [TaskData getDateString:self.datePicker.date];
+    
+    [self.delegate didEditTask:tempTask];
+}
 @end

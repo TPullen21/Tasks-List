@@ -133,7 +133,7 @@
                         <outlet property="dateLabel" destination="XYM-TR-jKa" id="sYI-Gd-U4J"/>
                         <outlet property="descriptionLabel" destination="Hdx-Fk-lA3" id="qgc-Dq-7Sv"/>
                         <outlet property="titleLabel" destination="fDg-nS-F3B" id="Go4-gh-Xqf"/>
-                        <segue destination="LwK-R5-kAv" kind="push" identifier="toEditDetailViewController" id="4q3-go-GxU"/>
+                        <segue destination="LwK-R5-kAv" kind="modal" identifier="toEditDetailViewController" id="4q3-go-GxU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Awo-yH-hsv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -230,6 +230,15 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4w4-bs-hCM">
+                                <rect key="frame" x="248" y="71" width="34" height="30"/>
+                                <state key="normal" title="Save">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveButtonPressed:" destination="LwK-R5-kAv" eventType="touchUpInside" id="CHj-Hl-nAs"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>

@@ -46,6 +46,8 @@
 }
 
 -(void)didEditTask:(TaskData *)task {
+    self.taskToView = task;
+    [self viewDidLoad];
     [self.delegate didEditTask:task atRow:self.indexRow];
     [self dismissViewControllerAnimated:YES completion:nil];
 }

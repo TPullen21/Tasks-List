@@ -26,5 +26,6 @@
 @property (strong, nonatomic) TaskData *task;
 
 - (IBAction)saveBarButtonPressed:(UIBarButtonItem *)sender;
+- (IBAction)saveButtonPressed:(UIButton *)sender;
 
 @end
