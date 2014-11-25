@@ -64,6 +64,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Tasks" id="oHB-RN-dhT">
+                        <barButtonItem key="leftBarButtonItem" title="Reorder" id="m14-Q3-qvP">
+                            <connections>
+                                <action selector="reorderBarButtonItemPressed:" destination="vXZ-lx-hvc" id="yA5-yl-ymi"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="XPe-JE-AWY">
                             <connections>
                                 <action selector="addTaskBarButtonPressed:" destination="vXZ-lx-hvc" id="oTp-oi-cRB"/>

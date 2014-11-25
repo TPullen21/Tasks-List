@@ -103,6 +103,15 @@
     [self performSegueWithIdentifier:@"toAddTaskViewController" sender:nil];
 }
 
+- (IBAction)reorderBarButtonItemPressed:(UIBarButtonItem *)sender {
+    if (self.tableView.editing == YES) {
+        [self.tableView setEditing:NO animated:YES];
+    }
+    else {
+        [self.tableView setEditing:YES animated:YES];
+    }
+}
+
 #pragma mark - AddTaskViewControllerDelegate
 
 -(void)didAddTask:(TaskData *)task {
@@ -177,6 +186,16 @@
     [self.tableView reloadData];
 }
 
+- (void)saveTasks {
+    NSMutableArray *taskObjectsAsPropertyLists = [[NSMutableArray alloc] init];
+    for (int x = 0; x < [self.tasks count]; x++) {
+        [taskObjectsAsPropertyLists addObject:[self taskObjectAsAPropertyList:self.tasks[x]]];
+    }
+    
+    [[NSUserDefaults standardUserDefaults] setObject:taskObjectsAsPropertyLists forKey:TASK_OBJECTS_KEY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
 #pragma mark - UITableView Delegate
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -204,6 +223,19 @@
         
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }
+}
+
+-(BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+-(void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
+    
+    TaskData *taskObject = self.tasks[sourceIndexPath.row];
+    [self.tasks removeObjectAtIndex:sourceIndexPath.row];
+    [self.tasks insertObject:taskObject atIndex:destinationIndexPath.row];
+    
+    [self saveTasks];
 }
 
 @end
