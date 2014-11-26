@@ -15,7 +15,7 @@
 
 @end
 
-@interface EditDetailViewController : UIViewController
+@interface EditDetailViewController : UIViewController <UITextFieldDelegate, UITextViewDelegate>
 
 @property (weak, nonatomic) id <EditDetailViewControllerDelegate> delegate;
 
